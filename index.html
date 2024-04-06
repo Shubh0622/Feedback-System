@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+  </head>
+  <body style="margin-left: 3%;">
+    <h1 align="center">Feedback System</h1>
+    <h2>Overall Rating</h2>
+    <p id="1" data-val="0">* 0</p>
+    <p id="2" data-val="0">** 0</p>
+    <p id="3" data-val="0">*** 0</p>
+    <p id="4" data-val="0">**** 0</p>
+    <p id="5" data-val="0">***** 0</p>
+    <ul id="star"></ul>
+    <h2>Feedback Form</h2>
+    <form onsubmit="handleFormSubmit(event)">
+      <label for="username">Enter Your Name:</label>
+      <input type="text" name="username" id="username" />
+      <label for="rating">Choose Rating:</label>
+      <select id="rating" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input type="submit" value="Submit" id="sub" />
+    </form>
+    <h2>All Feedbacks</h2>
+    <ul id="info"></ul>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
+  <script src="index.js"></script>
+</html>
