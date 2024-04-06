@@ -25,6 +25,7 @@ function handleFormSubmit(event) {
     .then(res =>{
       for(let i=0;i<res.data.length;i++){
         displayUserOnScreen(res.data[i]);
+        addOverallRating(res.data[i]);
       }
     })
     .catch(err=>{
@@ -56,6 +57,7 @@ function handleFormSubmit(event) {
       axios.delete(`https://crudcrud.com/api/b14708abbd424ddb92b7e678e8ac2f19/feedbackData/${id}`)
            .then(res => {
             feedbackList.removeChild(event.target.parentElement)
+            deleteOverallRating(feedbackDetails)
         })
            .catch(err => console.log(err))
       // userList.removeChild(event.target.parentElement);
@@ -74,7 +76,7 @@ function handleFormSubmit(event) {
       axios.delete(`https://crudcrud.com/api/b14708abbd424ddb92b7e678e8ac2f19/feedbackData/${id}`)
            .then(res => {
             feedbackList.removeChild(event.target.parentElement)
-            
+            deleteOverallRating(feedbackDetails)
         })
            .catch(err => console.log(err))
     });
@@ -82,10 +84,28 @@ function handleFormSubmit(event) {
 
   function addOverallRating(feedbackDetails){
     //feedbackDetails.rating;
+    let string="";
+    for(let i=0;i<feedbackDetails.rating;i++){
+        string=string+"*";
+    }
     let rating=document.getElementById(`${feedbackDetails.rating}`);
     let ratingCount=rating.getAttribute("data-val");
     ratingCount++;
+    rating.innerHTML=`${string} ${ratingCount}`;
+    rating.setAttribute("data-val",ratingCount);
     
+  }
+
+  function deleteOverallRating(feedbackDetails){
+    //feedbackDetails.rating;
+    let string="";
+    for(let i=0;i<feedbackDetails.rating;i++){
+        string=string+"*";
+    }
+    let rating=document.getElementById(`${feedbackDetails.rating}`);
+    let ratingCount=rating.getAttribute("data-val");
+    ratingCount--;
+    rating.innerHTML=`${string} ${ratingCount}`;
     rating.setAttribute("data-val",ratingCount);
     
   }
